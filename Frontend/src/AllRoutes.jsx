@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./components/home/HomePage";
 import AddIngredientsPage from "./components/ingredients/AddIngredientsPage";
-import RecipesPage from "./components/recipes/RecipesPage";
+import RecipesSearchPage from "./components/recipes/RecipesSearchPage";
 import ShoppingListPage from "./components/shopping-list/ShoppingListPage";
 
 const routes = [
@@ -16,7 +16,7 @@ const routes = [
   },
   {
     path: "/recipes",
-    Component: RecipesPage,
+    Component: RecipesSearchPage,
   },
   {
     path: "/shopping-list",

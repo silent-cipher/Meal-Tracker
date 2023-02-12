@@ -17,7 +17,7 @@ const datesAreSameDay = (date1, date2) => {
   );
 };
 
-const MealsList = ({ isLoading, meals }) => {
+const MealsList = ({ isLoading, meals, onDelete }) => {
   return (
     <div className={classes["list-container"]}>
       <h1>Planned Meals</h1>
@@ -28,7 +28,14 @@ const MealsList = ({ isLoading, meals }) => {
           const mealForDay = meals.find((meal) =>
             datesAreSameDay(date, meal.plannedDate)
           );
-          return <MealsListItem key={index} meal={mealForDay} date={date} />;
+          return (
+            <MealsListItem
+              key={index}
+              meal={mealForDay}
+              date={date}
+              onDelete={onDelete}
+            />
+          );
         })
       )}
     </div>

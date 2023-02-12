@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { SmallX } from "../ui/SmallX";
 import classes from "./Meals.module.css";
 
-const MealsListItem = ({ meal, date }) => {
+const MealsListItem = ({ meal, date, onDelete }) => {
   return (
     <div className={classes["list-item"]}>
       {meal ? (
@@ -10,7 +10,7 @@ const MealsListItem = ({ meal, date }) => {
           <h3>{date.getDate()}</h3>
           <p>{meal.recipe.name}</p>
           <div className={classes["right-action"]}>
-            <SmallX />
+            <SmallX onClick={() => onDelete(meal._id)} />
           </div>
         </>
       ) : (
