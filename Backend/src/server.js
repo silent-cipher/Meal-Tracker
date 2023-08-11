@@ -1,5 +1,8 @@
 import express from "express";
 import { routes } from "./routes";
+import { db } from "./db/db";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
 
@@ -20,6 +23,10 @@ app.use((req, res, next) => {
 
 routes.forEach((route) => app[route.method](route.path, route.handler));
 
-app.listen(8080, () => {
-  console.log("Server is listening on Port 8080");
-});
+const start = async () => {
+  await db.connect(process.env.MONGODB_URL);
+  app.listen(8080, () => {
+    console.log("Server is listening on Port 8080");
+  });
+};
+start();

@@ -1,13 +1,16 @@
 import { MongoClient } from "mongodb";
 
-const DB_NAME = "meal-trakcer";
+const DB_NAME = "meal-tracker";
 
 export const db = {
   _dbClient: null,
   connect: async function (url) {
-    const client = await MongoClient.connect(url, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
+    const client = await MongoClient.connect(url, function (err, db) {
+      if (err) throw err;
+      console.log("Connected to MongoDB!");
+
+      // perform actions on the database object here
+      db.close();
     });
     this._dbClient = client;
   },
